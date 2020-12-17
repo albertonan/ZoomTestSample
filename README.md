@@ -19,6 +19,6 @@ npm run serve
 ```
 ### Open the sample
 
-Go to https://localhost:8080
-Login with your Zoom account
+- Go to https://localhost:8080
+- Login with your Zoom account
 
