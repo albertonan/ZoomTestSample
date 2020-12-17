@@ -8,12 +8,12 @@ cd ZoomTestSample
 npm i
 ```
 
-Run the back server
+Start the back server
 ```sh
 node backServer.js
 ```
 
-Run the front server
+Start the front server
 ```sh
 npm run serve
 ```
