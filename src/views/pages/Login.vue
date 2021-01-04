@@ -4,7 +4,6 @@
       <CRow class="justify-content-center">
         <CCol md="8">
           <CCardGroup>
-            
             <CCard
               color="primary"
               text-color="white"
@@ -23,7 +22,7 @@
                 </CButton>
               </CCardBody>
             </CCard>
-          </CCardGroup>  
+          </CCardGroup>
         </CCol>
       </CRow>
     </CContainer>
@@ -31,21 +30,25 @@
 </template>
 
 <script>
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
+import ZoomLogin from "../../requests/zoomLogin";
 
 export default {
-  name: 'Login',
-  methods : {
-    redirectToLogin(){
-      window.location = 'https://zoom.us/oauth/authorize?response_type=code&client_id=JFdAIYn_R8yQI2w9y2xgQ&redirect_uri=http://localhost%3A8080%2Fpages%2Fregister'
-    }
+  name: "Login",
+  methods: {
+    redirectToLogin() {
+      this.getBasicAuth((appID, baseURL) => {
+        let newLocation = "https://zoom.us/oauth/authorize?response_type=code&client_id="+appID+"&redirect_uri="+baseURL+"%2Fpages%2Fregister"
+        window.location = newLocation;
+      });
+    },
+    getBasicAuth(callback) {
+      ZoomLogin.getBasicAuth().then((res) => {
+        Cookies.set("basicAppAuth", res.data.basicAuth);
+        callback(res.data.appID, res.data.baseURL);
+      });
+    },
   },
-  mounted() {
-    let appID = 'JFdAIYn_R8yQI2w9y2xgQ'
-    let appSecret = 'oHOQSk59HHHp8nkJGKNyFehE4EGbUki0'
-    let basicAppAuth = Buffer.from(appID + ':' + appSecret).toString('base64')
-    Cookies.set('basicAppAuth', basicAppAuth)
-  }
-}
+};
 </script>
  

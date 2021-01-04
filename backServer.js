@@ -5,12 +5,15 @@ const cors = require('cors')
 app.use(express.json())
 app.use(cors());
 
-
+var baseURL = 'https://localhost:8080'
 
 app.post('/login', function (req, res) {
+
+    
+
     var options = {
         host: `zoom.us`,
-        path: `/oauth/token?grant_type=authorization_code&code=${req.body.code}&redirect_uri=${req.body.redirectURL}`,
+        path: `/oauth/token?grant_type=authorization_code&code=${req.body.code}&redirect_uri=${baseURL+req.body.redirectURL}`,
         method: 'POST',
         headers: { 'Authorization': req.headers.authorization }
     };
@@ -116,6 +119,15 @@ app.post('/signature', function (req, res) {
 
 });
 
+app.get('/basicAuth', (req, res)=>{
+    let appID = 'JFdAIYn_R8yQI2w9y2xgQ'
+    let appSecret = 'oHOQSk59HHHp8nkJGKNyFehE4EGbUki0'
+    let basicAppAuth = Buffer.from(appID + ':' + appSecret).toString('base64')
+    res.send({basicAuth: basicAppAuth,
+            appID: appID,
+            baseURL: baseURL})
+})
+
 app.listen(3000, () => {
-    console.log("El servidor está inicializado en el puerto 3000");
+    console.log("Server started on port 3000");
 });

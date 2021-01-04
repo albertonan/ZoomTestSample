@@ -18,7 +18,6 @@ export default {
     let code = this.$route.query.code;
     if (code) {
       zoomLogin.getAccessToken(code).then((res) => {
-        console.log(res.data);
         if (res.data.access_token) {
           Cookies.set('access_token',res.data.access_token)
           Cookies.set('expiring',new Date().getTime() + 3599000)
@@ -26,7 +25,6 @@ export default {
           return
         }
       });
-      //$route.replace('')
     }
   },
 };

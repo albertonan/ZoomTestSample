@@ -22,7 +22,6 @@ Vue.use(Router)
 function isDateInThePast(string) {
   let now = new Date();
   let date = new Date(parseInt(string));
-  console.log(now.getTime())
   return date < now;
 }
 
