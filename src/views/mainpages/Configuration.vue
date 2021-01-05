@@ -283,7 +283,7 @@ export default {
       };
       meetings.createMeeting(data).then(res=>{
         console.log(res.data)
-  
+        this.$router.push('/list')
       })
     },
   },

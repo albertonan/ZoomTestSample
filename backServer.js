@@ -5,7 +5,9 @@ const cors = require('cors')
 app.use(express.json())
 app.use(cors());
 
-var baseURL = 'https://localhost:8080'
+require('dotenv').config();
+
+var baseURL = process.env.ZoomTestBaseURL
 
 app.post('/login', function (req, res) {
 
@@ -96,8 +98,8 @@ app.post('/users/:userId/meetings', function (req, res) {
 
 app.post('/signature', function (req, res) {
 
-    const API_KEY = 'CIgtVGg3Tvu-9TNZM4R4Dg'
-    const API_SECRET = "qixK0jiF2FPYFBvfni8OCSL8OsXQYo94rIRu"
+    const API_KEY = process.env.ZoomTestOAuthID
+    const API_SECRET = process.env.ZoomTestOAuthSecret
 
     var data = req.body
 
@@ -120,8 +122,8 @@ app.post('/signature', function (req, res) {
 });
 
 app.get('/basicAuth', (req, res)=>{
-    let appID = 'JFdAIYn_R8yQI2w9y2xgQ'
-    let appSecret = 'oHOQSk59HHHp8nkJGKNyFehE4EGbUki0'
+    let appID = process.env.ZoomTestJWTID
+    let appSecret = process.env.ZoomTestJWTSecret
     let basicAppAuth = Buffer.from(appID + ':' + appSecret).toString('base64')
     res.send({basicAuth: basicAppAuth,
             appID: appID,

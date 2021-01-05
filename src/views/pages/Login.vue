@@ -2,12 +2,12 @@
   <div class="c-app flex-row align-items-center">
     <CContainer>
       <CRow class="justify-content-center">
-        <CCol md="8">
+        <CCol class="md-8 xs-12">
           <CCardGroup>
             <CCard
               color="primary"
               text-color="white"
-              class="text-center py-5 d-md-down-none"
+              class="text-center py-5"
               body-wrapper
             >
               <CCardBody>
