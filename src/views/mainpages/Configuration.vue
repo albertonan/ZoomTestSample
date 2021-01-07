@@ -8,166 +8,189 @@
           </CCardHeader>
           <CCardBody>
             <CForm>
-              <CInput v-model="topic" label="Topic" placeholder="Topic" :value="topic" horizontal />
-              <CInput v-model="date" label="Date" type="date" horizontal />
               <CInput
-              ref="startTime"
-                label="Start Time"
-                description="Start time"
-                type="time"
-                :value="startTime"
+                v-model="topic"
+                label="Topic"
+                placeholder="Topic"
+                :value="topic"
                 horizontal
-                :v-model="startTime"
               />
               <CInput
-                label="Duration"
-                description="Duration of the meeting"
-                placeholder="Duration of the meeting"
-                type="number"
-                :value="duration"
-                horizontal
-                :v-model="duration"
-              />
-              <CInput
-              v-model="password"
+                v-model="password"
                 label="Password"
                 description="Please enter a complex password"
                 placeholder="Add a password to the meeting"
                 type="password"
                 horizontal
               />
-              <CRow form class="form-group">
-                <CCol sm="4">
-                  <CCol tag="label" sm="6" class="col-form-label">
-                    Host video
-                  </CCol>
-                  <CSwitch
+              <CRow>
+                <CCol sm="3"><label>Schedule meeting?</label></CCol>
+                <CCol sm="9"
+                  ><CSwitch
                     class="mr-1"
                     color="primary"
-                    :checked="hostVideo"
                     shape="pill"
-                    v-model="hostVideo"
-                  />
-                </CCol>
-                <CCol sm="4">
-                  <CCol tag="label" sm="6" class="col-form-label">
-                    Participant video
-                  </CCol>
-                  <CSwitch
-                    class="mr-1"
-                    color="primary"
-                    :checked="participantVideo"
-                    shape="pill"
-                    v-model="participantVideo"
-                  />
-                </CCol>
-                <CCol sm="4">
-                  <CCol tag="label" sm="6" class="col-form-label">
-                    Cn Meeting
-                  </CCol>
-                  <CSwitch
-                    class="mr-1"
-                    color="primary"
-                    :checked="cnMeeting"
-                    shape="pill"
-                    v-model="cnMeeting"
-                  />
-                </CCol>
+                    @change.native="scheduleMeeting = !scheduleMeeting"
+                /></CCol>
               </CRow>
-              <CRow form class="form-group">
-                <CCol sm="4">
-                  <CCol tag="label" sm="6" class="col-form-label">
-                    In Meeting
+              <br>
+              <CCollapse :show="scheduleMeeting" :duration="200">
+                <CInput v-model="date" label="Date" type="date" horizontal />
+                <CInput
+                  ref="startTime"
+                  label="Start Time"
+                  description="Start time"
+                  type="time"
+                  :value="startTime"
+                  horizontal
+                  :v-model="startTime"
+                />
+                <CInput
+                  label="Duration"
+                  description="Duration of the meeting"
+                  placeholder="Duration of the meeting"
+                  type="number"
+                  :value="duration"
+                  horizontal
+                  :v-model="duration"
+                />
+                <CRow form class="form-group">
+                  <CCol sm="4">
+                    <CCol tag="label" sm="6" class="col-form-label">
+                      Host video
+                    </CCol>
+                    <CSwitch
+                      class="mr-1"
+                      color="primary"
+                      :checked="hostVideo"
+                      shape="pill"
+                      v-model="hostVideo"
+                    />
                   </CCol>
-                  <CSwitch
-                    class="mr-1"
-                    color="primary"
-                    :checked="inMeeting"
-                    shape="pill"
-                    v-model="inMeeting"
-                  />
-                </CCol>
-                <CCol sm="4">
-                  <CCol tag="label" sm="6" class="col-form-label">
-                    Join before host
+                  <CCol sm="4">
+                    <CCol tag="label" sm="6" class="col-form-label">
+                      Participant video
+                    </CCol>
+                    <CSwitch
+                      class="mr-1"
+                      color="primary"
+                      :checked="participantVideo"
+                      shape="pill"
+                      v-model="participantVideo"
+                    />
                   </CCol>
-                  <CSwitch
-                    class="mr-1"
-                    color="primary"
-                    :checked="beforeHost"
-                    shape="pill"
-                    v-model="beforeHost"
-                  />
-                </CCol>
-                <CCol sm="4">
-                  <CCol tag="label" sm="6" class="col-form-label">
-                    Mute upon entry
+                  <CCol sm="4">
+                    <CCol tag="label" sm="6" class="col-form-label">
+                      Cn Meeting
+                    </CCol>
+                    <CSwitch
+                      class="mr-1"
+                      color="primary"
+                      :checked="cnMeeting"
+                      shape="pill"
+                      v-model="cnMeeting"
+                    />
                   </CCol>
-                  <CSwitch
-                    class="mr-1"
-                    color="primary"
-                    :checked="mute"
-                    shape="pill"
-                    v-model="mute"
-                  />
-                </CCol>
-              </CRow>
-              <CRow form class="form-group">
-                <CCol sm="4">
-                  <CCol tag="label" sm="6" class="col-form-label">
-                    Watermark
+                </CRow>
+                <CRow form class="form-group">
+                  <CCol sm="4">
+                    <CCol tag="label" sm="6" class="col-form-label">
+                      In Meeting
+                    </CCol>
+                    <CSwitch
+                      class="mr-1"
+                      color="primary"
+                      :checked="inMeeting"
+                      shape="pill"
+                      v-model="inMeeting"
+                    />
                   </CCol>
-                  <CSwitch
-                    class="mr-1"
-                    color="primary"
-                    :checked="watermark"
-                    shape="pill"
-                    v-model="watermark"
-                  />
-                </CCol>
-                <CCol sm="4">
-                  <CCol tag="label" sm="6" class="col-form-label">
-                    Use PMI
+                  <CCol sm="4">
+                    <CCol tag="label" sm="6" class="col-form-label">
+                      Join before host
+                    </CCol>
+                    <CSwitch
+                      class="mr-1"
+                      color="primary"
+                      :checked="beforeHost"
+                      shape="pill"
+                      v-model="beforeHost"
+                    />
                   </CCol>
-                  <CSwitch
-                    class="mr-1"
-                    color="primary"
-                    :checked="usePMI"
-                    shape="pill"
-                    v-model="usePMI"
-                  />
-                </CCol>
-                <CCol sm="4">
-                  <CCol tag="label" sm="6" class="col-form-label">
-                    Enforce login
+                  <CCol sm="4">
+                    <CCol tag="label" sm="6" class="col-form-label">
+                      Mute upon entry
+                    </CCol>
+                    <CSwitch
+                      class="mr-1"
+                      color="primary"
+                      :checked="mute"
+                      shape="pill"
+                      v-model="mute"
+                    />
                   </CCol>
-                  <CSwitch
-                    class="mr-1"
-                    color="primary"
-                    :checked="enforceLogin"
-                    shape="pill"
-                    v-model="enforceLogin"
-                  />
-                </CCol>
-              </CRow>
-              <CRow form class="form-group">
-                <CCol sm="4">
-                  <CCol tag="label" sm="6" class="col-form-label">
-                    Notify registrants by email
+                </CRow>
+                <CRow form class="form-group">
+                  <CCol sm="4">
+                    <CCol tag="label" sm="6" class="col-form-label">
+                      Watermark
+                    </CCol>
+                    <CSwitch
+                      class="mr-1"
+                      color="primary"
+                      :checked="watermark"
+                      shape="pill"
+                      v-model="watermark"
+                    />
                   </CCol>
-                  <CSwitch
-                    class="mr-1"
-                    color="primary"
-                    :checked="notify"
-                    shape="pill"
-                    v-model="notify"
-                  />
-                </CCol>
-              </CRow>
+                  <CCol sm="4">
+                    <CCol tag="label" sm="6" class="col-form-label">
+                      Use PMI
+                    </CCol>
+                    <CSwitch
+                      class="mr-1"
+                      color="primary"
+                      :checked="usePMI"
+                      shape="pill"
+                      v-model="usePMI"
+                    />
+                  </CCol>
+                  <CCol sm="4">
+                    <CCol tag="label" sm="6" class="col-form-label">
+                      Enforce login
+                    </CCol>
+                    <CSwitch
+                      class="mr-1"
+                      color="primary"
+                      :checked="enforceLogin"
+                      shape="pill"
+                      v-model="enforceLogin"
+                    />
+                  </CCol>
+                </CRow>
+                <CRow form class="form-group">
+                  <CCol sm="4">
+                    <CCol tag="label" sm="6" class="col-form-label">
+                      Notify registrants by email
+                    </CCol>
+                    <CSwitch
+                      class="mr-1"
+                      color="primary"
+                      :checked="notify"
+                      shape="pill"
+                      v-model="notify"
+                    />
+                  </CCol>
+                </CRow>
+              </CCollapse>
             </CForm>
           </CCardBody>
           <CCardFooter>
-            <CButton @click="createMeeting" type="submit" size="sm" color="primary"
+            <CButton
+              @click="createMeeting"
+              type="submit"
+              size="sm"
+              color="primary"
               ><CIcon name="cil-check-circle" /> Create</CButton
             >
           </CCardFooter>
@@ -216,20 +239,21 @@
 <script>
 import meetings from "../../requests/meetings";
 import Vue from "vue";
+import TheContainer from "../../containers/TheContainer.vue";
 
 export default {
   name: "Colors",
-  components: {},
+  components: { TheContainer },
   mounted() {
     this.getMeetings();
   },
   data: () => {
     return {
-      topic: 'Test topic',
-      date: '',
-      startTime: '',
+      topic: "Test topic",
+      date: "",
+      startTime: "",
       duration: 3599,
-      password: '',
+      password: "",
       hostVideo: true,
       participantVideo: true,
       cnMeeting: true,
@@ -239,28 +263,36 @@ export default {
       watermark: false,
       usePMI: false,
       enforceLogin: false,
-      notify: false
+      notify: false,
+      scheduleMeeting: false,
     };
   },
   methods: {
+    change() {
+      console.log(this.scheduleMeeting);
+    },
     getMeetings() {
       meetings.getAllMeetings().then((res) => {
         console.log(res.data);
       });
     },
     createMeeting() {
+      if(!this.password || this.password.trim()=="") {
+        console.log("No password")
+        return
+      }
       var dateFormat = new Intl.DateTimeFormat("default", {
         hour: "numeric",
         minute: "numeric",
         second: "numeric",
       });
       var usedOptions = dateFormat.resolvedOptions();
-      console.log(this.date)
-      console.log(this.$refs.startTime.state)
+      console.log(this.date);
+      console.log(this.$refs.startTime.state);
       var data = {
         topic: this.topic,
         type: 2,
-        start_time: this.date+' '+this.$refs.startTime.state,
+        start_time: this.date + " " + this.$refs.startTime.state,
         duration: this.duration,
         timezone: usedOptions.timeZone,
         password: this.password,
@@ -281,10 +313,10 @@ export default {
           registrants_email_notification: this.notify,
         },
       };
-      meetings.createMeeting(data).then(res=>{
-        console.log(res.data)
-        this.$router.push('/list')
-      })
+      meetings.createMeeting(data).then((res) => {
+        console.log(res.data);
+        this.$router.push("/list");
+      });
     },
   },
 };
