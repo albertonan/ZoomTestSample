@@ -17,5 +17,12 @@ export default {
             data: data,
             headers: { Authorization: 'Bearer '+Cookies.get('access_token') }
         })
+    },
+    deleteMeeting(meetingId){
+        return request({
+            url: '/meetings/'+meetingId,
+            method: "DELETE",
+            headers: { Authorization: 'Bearer '+Cookies.get('access_token') }
+        })
     }
 }

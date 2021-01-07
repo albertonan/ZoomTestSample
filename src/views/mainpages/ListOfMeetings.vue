@@ -20,6 +20,7 @@
               </CCol>
               <CCol sm="6" style="float: right">
                 <CButton type="submit" size="sm" color="danger"
+                @click="deleteMeeting(meeting)"
                   ><CIcon name="cil-check-circle" /> Delete</CButton
                 >
               </CCol>
@@ -121,6 +122,11 @@ export default {
     },
     createMeeting(){
       this.$router.push('/configuration')
+    },
+    deleteMeeting(meeting){
+      meetings.deleteMeeting(meeting.id).then(res=>{
+        location.reload()
+      })
     }
   },
 };
