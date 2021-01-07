@@ -26,7 +26,7 @@
               </CCol>
             </CRow>
             <CCollapse :show="meeting.visibility" :duration="200"
-              ><ZoomMeeting :signature="meeting.signature" :meetingNumber="meeting.id" password="" email='albertonan@gmail.com' :connect="meeting.visibility" username="anan@makenai.es" :key="meeting.visibility"
+              ><ZoomMeeting :signature="meeting.signature" :meetingNumber="meeting.id" password="" :email='email' :connect="meeting.visibility" :username="username" :key="meeting.visibility"
             /></CCollapse>
           </CCardFooter>
         </CCard>
@@ -85,6 +85,7 @@ import meetings from "../../requests/meetings";
 import Vue from "vue";
 import ZoomMeeting from "./ZoomMeeting";
 import zoomLogin from '../../requests/zoomLogin';
+import Cookies from 'js-cookie'
 
 export default {
   name: "List of meetings",
@@ -96,11 +97,14 @@ export default {
     return {
       meetings: [],
       meetingVisible: false,
-      noMeetings: false
+      noMeetings: false,
+      email: '',
+      username: ''
     };
   },
-  computed: {
-    
+  beforeMount() {
+    this.email = Cookies.get('email')
+    this.username = Cookies.get('username')
   },
   methods: {
     getMeetings() {

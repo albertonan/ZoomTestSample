@@ -18,7 +18,6 @@
         :height="35" 
         viewBox="0 0 110 134"
       />
-      <!--<CIcon name="logo" height="48" alt="Logo" />-->
     </CHeaderBrand>
     <CHeaderNav class="d-md-down-none mr-auto">
       <CHeaderNavItem class="px-3">
@@ -28,11 +27,6 @@
       </CHeaderNavItem>
     </CHeaderNav>
     <CHeaderNav class="mr-4">
-      <!--<CHeaderNavItem class="d-md-down-none mx-2">
-        <CHeaderNavLink>
-          <CIcon name="cil-bell" />
-        </CHeaderNavLink>
-      </CHeaderNavItem>-->
       <CDropdown
         inNav
         class="c-header-nav-items"

@@ -11,6 +11,7 @@
 <script>
 import zoomLogin from "../../requests/zoomLogin";
 import Cookies from 'js-cookie';
+import users from '../../requests/users'
 
 export default {
   name: "Register",
@@ -21,7 +22,12 @@ export default {
         if (res.data.access_token) {
           Cookies.set('access_token',res.data.access_token)
           Cookies.set('expiring',new Date().getTime() + 3599000)
-          this.$router.push('/list')
+          users.getUserInfo().then(res=>{
+            console.log(res.data)
+            Cookies.set('email', res.data.email)
+            Cookies.set('username', res.data.first_name)
+            this.$router.push('/list')
+          })
           return
         }
       });

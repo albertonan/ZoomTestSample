@@ -96,6 +96,37 @@ app.post('/users/:userId/meetings', function (req, res) {
 
 });
 
+app.get('/users/me', function (req, res) {
+
+    const data = JSON.stringify(req.body)
+
+    var options = {
+        host: `api.zoom.us`,
+        path: `/v2/users/me`,
+        method: 'GET',
+        headers: { Authorization: req.headers.authorization, 'Content-Type': "application/json", 'Content-Length': data.length },
+
+    };
+
+    var req = https.request(options, (resp) => {
+        let data = '';
+        // a data chunk has been received.
+        resp.on('data', (chunk) => {
+            data += chunk;
+        });
+
+        // complete response has been received.
+        resp.on('end', () => {
+            res.send(data);
+        });
+
+    })
+
+    req.write(data);
+    req.end()
+
+});
+
 app.delete('/meetings/:meetingId', function (req, res) {
 
     const data = JSON.stringify(req.body)

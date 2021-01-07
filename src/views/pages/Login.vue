@@ -11,14 +11,14 @@
               body-wrapper
             >
               <CCardBody>
-                <h2>Login with your Zoom account</h2>
+                <h2>{{$t('login.loginTitle')}}</h2>
                 <CButton
                   color="light"
                   variant="outline"
                   size="lg"
                   @click="redirectToLogin"
                 >
-                  LOGIN
+                  {{$t('login.login')}}
                 </CButton>
               </CCardBody>
             </CCard>

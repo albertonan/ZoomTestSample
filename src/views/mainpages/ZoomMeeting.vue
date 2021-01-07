@@ -22,7 +22,6 @@ export default {
   },
   beforeMount() {
     this.meetingConfig = {
-      apiKey: "CIgtVGg3Tvu-9TNZM4R4Dg",
       meetingNumber: this.meetingNumber,
       userName: this.username,
       passWord: this.password,
