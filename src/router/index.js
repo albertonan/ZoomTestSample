@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Cookies from "js-cookie";
+import i18n from '../lang/index'
 
 
 // Containers

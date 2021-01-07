@@ -2,7 +2,7 @@
   <div class="d-flex align-items-center min-vh-100">
     <CContainer fluid>
       <CRow class="justify-content-center">
-        <CCol md="6"> Obteniendo Token de Acceso </CCol>
+        <CCol md="6"> {{$t('register.obtaining')}} </CCol>
       </CRow>
     </CContainer>
   </div>

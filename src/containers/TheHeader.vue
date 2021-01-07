@@ -23,7 +23,7 @@
     <CHeaderNav class="d-md-down-none mr-auto">
       <CHeaderNavItem class="px-3">
         <CHeaderNavLink to="/configuration">
-          {{ $i18n.t("menu.config") }}
+          {{ $i18n.t("menu.create") }}
         </CHeaderNavLink>
       </CHeaderNavItem>
     </CHeaderNav>

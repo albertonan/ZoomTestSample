@@ -6,7 +6,7 @@
           <CCardHeader>
             <strong>{{meeting.topic}}</strong>
           </CCardHeader>
-          <CCardBody>Meeting on {{ new Date(meeting.start_time) }}</CCardBody>
+          <CCardBody>{{$t('list.meetingOn')+" "+ new Date(meeting.start_time) }}</CCardBody>
           <CCardFooter>
             <CRow>
               <CCol sm="6">
@@ -15,13 +15,13 @@
                   type="submit"
                   size="sm"
                   color="primary"
-                  ><CIcon name="cil-check-circle" /> {{!(meeting.visibility)?'Join':'Close'}}</CButton
+                  ><CIcon name="cil-check-circle" /> {{!(meeting.visibility)?$t('list.join'):$t('list.close')}}</CButton
                 >
               </CCol>
               <CCol sm="6" style="float: right">
                 <CButton type="submit" size="sm" color="danger"
                 @click="deleteMeeting(meeting)"
-                  ><CIcon name="cil-check-circle" /> Delete</CButton
+                  ><CIcon name="cil-check-circle" /> {{$t('list.delete')}}</CButton
                 >
               </CCol>
             </CRow>
@@ -38,7 +38,7 @@
                   type="submit"
                   size="sm"
                   color="primary"
-                  ><CIcon name="cil-check-circle" /> Create a new meeting</CButton
+                  ><CIcon name="cil-check-circle" /> {{$t('list.createNew')}}</CButton
                 >
     </CRow>
   </div>

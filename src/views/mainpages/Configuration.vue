@@ -4,27 +4,27 @@
       <CCol md="12">
         <CCard>
           <CCardHeader>
-            <strong>Create Meeting</strong>
+            <strong>{{$t('create.createMeeting')}}</strong>
           </CCardHeader>
           <CCardBody>
             <CForm>
               <CInput
                 v-model="topic"
-                label="Topic"
-                placeholder="Topic"
+                :label="$t('create.topic')"
+                :placeholder="$t('create.topic')"
                 :value="topic"
                 horizontal
               />
               <CInput
                 v-model="password"
-                label="Password"
-                description="Please enter a complex password"
-                placeholder="Add a password to the meeting"
+                :label="$t('create.password')"
+                :description="$t('create.enterComplexPass')"
+                :placeholder="$t('create.passPlaceholder')"
                 type="password"
                 horizontal
               />
               <CRow>
-                <CCol sm="3"><label>Schedule meeting?</label></CCol>
+                <CCol sm="3"><label>{{$t('create.scheduleMeeting')}}</label></CCol>
                 <CCol sm="9"
                   ><CSwitch
                     class="mr-1"
@@ -35,20 +35,20 @@
               </CRow>
               <br>
               <CCollapse :show="scheduleMeeting" :duration="200">
-                <CInput v-model="date" label="Date" type="date" horizontal />
+                <CInput v-model="date" :label="$t('create.date')" type="date" horizontal />
                 <CInput
                   ref="startTime"
-                  label="Start Time"
-                  description="Start time"
+                  :label="$t('create.startTime')"
+                  :description="$t('create.startTime')"
                   type="time"
                   :value="startTime"
                   horizontal
                   :v-model="startTime"
                 />
                 <CInput
-                  label="Duration"
-                  description="Duration of the meeting"
-                  placeholder="Duration of the meeting"
+                  :label="$t('create.duration')"
+                  :description="$t('create.durationOfMeeting')"
+                  :placeholder="$t('create.durationOfMeeting')"
                   type="number"
                   :value="duration"
                   horizontal
@@ -57,7 +57,7 @@
                 <CRow form class="form-group">
                   <CCol sm="4">
                     <CCol tag="label" sm="6" class="col-form-label">
-                      Host video
+                      {{$t('create.hostVideo')}}
                     </CCol>
                     <CSwitch
                       class="mr-1"
@@ -69,7 +69,7 @@
                   </CCol>
                   <CCol sm="4">
                     <CCol tag="label" sm="6" class="col-form-label">
-                      Participant video
+                      {{$t('create.participantVideo')}}
                     </CCol>
                     <CSwitch
                       class="mr-1"
@@ -81,7 +81,7 @@
                   </CCol>
                   <CCol sm="4">
                     <CCol tag="label" sm="6" class="col-form-label">
-                      Cn Meeting
+                      {{$t('create.cnMeeting')}}
                     </CCol>
                     <CSwitch
                       class="mr-1"
@@ -95,7 +95,7 @@
                 <CRow form class="form-group">
                   <CCol sm="4">
                     <CCol tag="label" sm="6" class="col-form-label">
-                      In Meeting
+                      {{$t('create.inMeeting')}}
                     </CCol>
                     <CSwitch
                       class="mr-1"
@@ -107,7 +107,7 @@
                   </CCol>
                   <CCol sm="4">
                     <CCol tag="label" sm="6" class="col-form-label">
-                      Join before host
+                      {{$t('create.joinBeforeHost')}}
                     </CCol>
                     <CSwitch
                       class="mr-1"
@@ -119,7 +119,7 @@
                   </CCol>
                   <CCol sm="4">
                     <CCol tag="label" sm="6" class="col-form-label">
-                      Mute upon entry
+                      {{$t('create.muteOnEntry')}}
                     </CCol>
                     <CSwitch
                       class="mr-1"
@@ -133,7 +133,7 @@
                 <CRow form class="form-group">
                   <CCol sm="4">
                     <CCol tag="label" sm="6" class="col-form-label">
-                      Watermark
+                      {{$t('create.watermark')}}
                     </CCol>
                     <CSwitch
                       class="mr-1"
@@ -145,7 +145,7 @@
                   </CCol>
                   <CCol sm="4">
                     <CCol tag="label" sm="6" class="col-form-label">
-                      Use PMI
+                      {{$t('create.usePMI')}}
                     </CCol>
                     <CSwitch
                       class="mr-1"
@@ -157,7 +157,7 @@
                   </CCol>
                   <CCol sm="4">
                     <CCol tag="label" sm="6" class="col-form-label">
-                      Enforce login
+                      {{$t('create.forceLogin')}}
                     </CCol>
                     <CSwitch
                       class="mr-1"
@@ -171,7 +171,7 @@
                 <CRow form class="form-group">
                   <CCol sm="4">
                     <CCol tag="label" sm="6" class="col-form-label">
-                      Notify registrants by email
+                      {{$t('create.notify')}}
                     </CCol>
                     <CSwitch
                       class="mr-1"
@@ -191,7 +191,7 @@
               type="submit"
               size="sm"
               color="primary"
-              ><CIcon name="cil-check-circle" /> Create</CButton
+              ><CIcon name="cil-check-circle" /> {{$t('create.create')}}</CButton
             >
           </CCardFooter>
         </CCard>

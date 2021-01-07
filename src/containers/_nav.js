@@ -1,4 +1,4 @@
-import i18n from '../lang'
+import i18n from '../lang/index'
 
 export default [
   {
@@ -10,13 +10,13 @@ export default [
       },
       {
         _name: 'CSidebarNavItem',
-        name: 'Create meeting',
+        name: i18n.t('menu.create'),
         to: '/configuration',
         icon: 'cil-settings'
       },
       {
         _name: 'CSidebarNavItem',
-        name: 'List of meetings',
+        name: i18n.t('menu.list'),
         to: '/list',
         icon: 'cil-settings'
       },
